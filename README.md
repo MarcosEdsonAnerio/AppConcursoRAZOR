@@ -42,10 +42,10 @@ git clone https://github.com/seu-usuario/AppConcurso.git
 
 ## Estrutura do Projeto
 
-•	/Pages — Páginas Blazor (cadastro, inscrição, notas, resultados)
-•	/Models — Modelos de dados (Cargo, Candidato, Inscricao, Nota)
-•	/Services — Serviços para manipulação de dados
-•	/Contexto — Contexto do Entity Framework
+`/Pages` — Páginas Blazor (cadastro, inscrição, notas, resultados)
+`/Models` — Modelos de dados (Cargo, Candidato, Inscricao, Nota)
+`/Services` — Serviços para manipulação de dados
+`/Contexto` — Contexto do Entity Framework
 
 ## Telas Principais
 
