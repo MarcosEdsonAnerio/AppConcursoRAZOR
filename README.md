@@ -8,13 +8,13 @@ O AppConcurso é uma aplicação web que permite o cadastro e gerenciamento de c
 
 ## Funcionalidades
 
-•	Cadastro de Cargo: Permite adicionar novos cargos disponíveis para o concurso.
-•	Cadastro de Candidato: Permite cadastrar candidatos interessados em participar do concurso.
-•	Cadastro de Candidato com Inscrição: Permite cadastrar um novo candidato já realizando sua inscrição em um cargo.
-•	Inscrição de Candidato: Permite que candidatos já cadastrados se inscrevam em cargos disponíveis.
-•	Lançamento de Notas: Permite lançar notas de conhecimentos específicos e gerais para cada inscrição.
-•	Resultado Preliminar: Exibe a classificação dos candidatos pela soma das notas.
-•	Resultado Final: Exibe a classificação final considerando critérios de desempate (nota específica, nota geral, idade).
+`Cadastro de Cargo`: Permite adicionar novos cargos disponíveis para o concurso.
+`Cadastro de Candidato`: Permite cadastrar candidatos interessados em participar do concurso.
+`Cadastro de Candidato com Inscrição`: Permite cadastrar um novo candidato já realizando sua inscrição em um cargo.
+`Inscrição de Candidato`: Permite que candidatos já cadastrados se inscrevam em cargos disponíveis.
+`Lançamento de Notas`: Permite lançar notas de conhecimentos específicos e gerais para cada inscrição.
+`Resultado Preliminar`: Exibe a classificação dos candidatos pela soma das notas.
+`Resultado Final`: Exibe a classificação final considerando critérios de desempate (nota específica, nota geral, idade).
 
 ## Tecnologias Utilizadas
 
