@@ -18,11 +18,11 @@ O AppConcurso é uma aplicação web que permite o cadastro e gerenciamento de c
 
 ## Tecnologias Utilizadas
 
-•	.NET 7
-•	Blazor Server
-•	Entity Framework Core
-•	MySQL (banco de dados)
-•	C#
+-	.NET 7
+-	Blazor Server
+-	Entity Framework Core
+-	MySQL (banco de dados)
+-	C#
 
 ## Como Executar
 
@@ -48,10 +48,10 @@ git clone https://github.com/seu-usuario/AppConcurso.git
 
 ## Telas Principais
 
-•	Cadastro de Cargo
-•	Cadastro de Candidato
-•	Cadastro de Candidato com Inscrição
-•	Inscrição de Candidato
-•	Lançamento de Notas
-•	Resultado Preliminar
-•	Resultado Final
+-	Cadastro de Cargo
+-	Cadastro de Candidato
+-	Cadastro de Candidato com Inscrição
+-	Inscrição de Candidato
+-	Lançamento de Notas
+-	Resultado Preliminar
+-	Resultado Final
