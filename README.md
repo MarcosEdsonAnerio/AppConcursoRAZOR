@@ -27,16 +27,15 @@ O AppConcurso é uma aplicação web que permite o cadastro e gerenciamento de c
 ## Como Executar
 
 1.	Clone o repositório:
+```
 git clone https://github.com/seu-usuario/AppConcurso.git
-
-2.	Configure a string de conexão do MySQL no arquivo appsettings.json:
+```
+3.	Configure a string de conexão do MySQL no arquivo appsettings.json:
+```
 "ConnectionStrings": {
 "BaseConexaoMySql": "server=localhost;database=DBAppConcurso;user=root;password=suasenha"
 }
-
-   "ConnectionStrings": {
-     "BaseConexaoMySql": "server=localhost;database=DBAppConcurso;user=root;password=suasenha"
-   }
+```
 3.	Crie o banco de dados e as tabelas utilizando o script SQL fornecido na pasta /docs ou no README.
 4.	Acesse a aplicação em http://localhost:5000 (ou porta configurada).
 
