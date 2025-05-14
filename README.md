@@ -56,9 +56,3 @@ git clone https://github.com/seu-usuario/AppConcurso.git
 •	Lançamento de Notas
 •	Resultado Preliminar
 •	Resultado Final
-
-Atividade Avaliativa 3 — Linguagem de Programação Visual II
-Desenvolvido por: [Marcos Edson]
-Instituição: [IFRO - Campus Jiparaná]
-Ano: 2025
----
