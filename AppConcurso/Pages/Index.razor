@@ -1,0 +1,66 @@
+﻿@page "/"
+
+<PageTitle>Atividade Avaliativa 3 - Sistema de Concursos</PageTitle>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Sistema de Concursos</h1>
+        <h4 class="text-secondary">Atividade Avaliativa 3</h4>
+        <p class="lead">
+            Bem-vindo ao sistema de concursos desenvolvido para a Atividade Avaliativa 3.<br />
+            Este sistema permite gerenciar cargos, candidatos, inscrições, notas e resultados de concursos públicos.
+        </p>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            Funcionalidades Disponíveis
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <b>Cadastro de Cargo:</b> Registre novos cargos disponíveis para o concurso.
+            </li>
+            <li class="list-group-item">
+                <b>Cadastro de Candidato:</b> Adicione candidatos ao sistema.
+            </li>
+            <li class="list-group-item">
+                <b>Cadastro de Candidato com Inscrição:</b> Cadastre candidatos já vinculando-os a um cargo.
+            </li>
+            <li class="list-group-item">
+                <b>Inscrição de Candidato:</b> Realize a inscrição de candidatos em cargos disponíveis.
+            </li>
+            <li class="list-group-item">
+                <b>Lançamento de Notas:</b> Lance as notas dos candidatos nas provas.
+            </li>
+            <li class="list-group-item">
+                <b>Resultado Preliminar:</b> Visualize a classificação dos candidatos pela maior nota.
+            </li>
+            <li class="list-group-item">
+                <b>Resultado Final:</b> Classificação final considerando critérios de desempate:
+                <ul>
+                    <li>Maior nota em conhecimentos específicos</li>
+                    <li>Maior nota em conhecimentos gerais</li>
+                    <li>Candidato mais idoso</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            Rotas do Sistema
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>/cadastro-candidato</b> - Cadastro de Candidato</li>
+            <li class="list-group-item"><b>/cadastro-cargo</b> - Cadastro de Cargo</li>
+            <li class="list-group-item"><b>/cadastro-candidato-inscricao</b> - Cadastro de Candidato com Inscrição</li>
+            <li class="list-group-item"><b>/lancamento-notas</b> - Lançamento de Notas</li>
+            <li class="list-group-item"><b>/resultado-preliminar</b> - Resultado Preliminar</li>
+            <li class="list-group-item"><b>/resultado-final</b> - Resultado Final</li>
+        </ul>
+    </div>
+
+    <div class="alert alert-info text-center">
+        <b>Entrega:</b> 20 Pontos &nbsp; | &nbsp; <b>Apresentação:</b> 10 Pontos
+    </div>
+</div>

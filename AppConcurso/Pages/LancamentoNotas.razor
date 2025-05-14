@@ -1,0 +1,53 @@
+﻿@page "/lancamento-notas"
+@using AppConcurso.Models
+@inject NotaService NotaService
+@inject InscricaoService InscricaoService
+
+<h3>Lançamento de Notas</h3>
+
+<EditForm Model="@nota" OnValidSubmit="SalvarNota">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label>Inscrição</label>
+        <InputSelect class="form-control" @bind-Value="nota.InscricaoId">
+            <option value="">Selecione</option>
+            @foreach (var i in inscricoes)
+            {
+                <option value="@i.Id">@($"{i.Candidato.Nome} - {i.Cargo.Nome}")</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="mb-3">
+        <label>Conhecimentos Específicos</label>
+        <InputNumber class="form-control" @bind-Value="nota.ConhecimentosEspecificos" />
+    </div>
+    <div class="mb-3">
+        <label>Conhecimentos Gerais</label>
+        <InputNumber class="form-control" @bind-Value="nota.ConhecimentosGerais" />
+    </div>
+    <button class="btn btn-primary" type="submit">Lançar Nota</button>
+</EditForm>
+
+@if (mensagem != null)
+{
+    <div class="alert alert-success mt-3">@mensagem</div>
+}
+
+@code {
+    private Nota nota = new();
+    private List<Inscricao> inscricoes = new();
+    private string? mensagem;
+
+    protected override async Task OnInitializedAsync()
+    {
+        inscricoes = await InscricaoService.ListarAsync();
+    }
+
+    private async Task SalvarNota()
+    {
+        await NotaService.AdicionarAsync(nota);
+        mensagem = "Nota lançada com sucesso!";
+        nota = new();
+    }
+}

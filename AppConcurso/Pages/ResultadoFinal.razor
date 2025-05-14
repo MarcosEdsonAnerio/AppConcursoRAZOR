@@ -1,0 +1,67 @@
+﻿@page "/resultado-final"
+@using AppConcurso.Models
+@inject NotaService NotaService
+
+<h3>Resultado Final</h3>
+<p>
+    <strong>Classificação por critérios:</strong><br />
+    1. Maior nota nos conhecimentos específicos<br />
+    2. Maior nota nos conhecimentos gerais<br />
+    3. Candidato mais idoso
+</p>
+
+@if (resultados == null)
+{
+    <p>Carregando...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Posição</th>
+                <th>Candidato</th>
+                <th>Cargo</th>
+                <th>Nota Específica</th>
+                <th>Nota Geral</th>
+                <th>Idade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < resultados.Count; i++)
+            {
+                var r = resultados[i];
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@r.Inscricao.Candidato.Nome</td>
+                    <td>@r.Inscricao.Cargo.Nome</td>
+                    <td>@r.ConhecimentosEspecificos</td>
+                    <td>@r.ConhecimentosGerais</td>
+                    <td>@(CalcularIdade(r.Inscricao.Candidato.DataNascimento))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Nota>? resultados;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var notas = await NotaService.ListarAsync();
+        resultados = notas
+            .OrderByDescending(n => n.ConhecimentosEspecificos)
+            .ThenByDescending(n => n.ConhecimentosGerais)
+            .ThenByDescending(n => CalcularIdade(n.Inscricao.Candidato.DataNascimento))
+            .ToList();
+    }
+
+    private int CalcularIdade(DateTime dataNascimento)
+    {
+        var hoje = DateTime.Today;
+        var idade = hoje.Year - dataNascimento.Year;
+        if (dataNascimento.Date > hoje.AddYears(-idade)) idade--;
+        return idade;
+    }
+}

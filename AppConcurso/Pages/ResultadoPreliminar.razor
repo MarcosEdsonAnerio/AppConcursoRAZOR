@@ -1,0 +1,46 @@
+﻿@page "/resultado-preliminar"
+@using AppConcurso.Models
+@inject NotaService NotaService
+
+<h3>Resultado Preliminar</h3>
+
+@if (resultados == null)
+{
+    <p>Carregando...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Candidato</th>
+                <th>Cargo</th>
+                <th>Nota Específica</th>
+                <th>Nota Geral</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in resultados)
+            {
+                <tr>
+                    <td>@r.Inscricao.Candidato.Nome</td>
+                    <td>@r.Inscricao.Cargo.Nome</td>
+                    <td>@r.ConhecimentosEspecificos</td>
+                    <td>@r.ConhecimentosGerais</td>
+                    <td>@(r.ConhecimentosEspecificos + r.ConhecimentosGerais)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Nota>? resultados;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var notas = await NotaService.ListarAsync();
+        resultados = notas.OrderByDescending(n => n.ConhecimentosEspecificos + n.ConhecimentosGerais).ToList();
+    }
+}

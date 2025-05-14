@@ -1,0 +1,32 @@
+﻿@page "/cadastro-cargo"
+@using AppConcurso.Models
+@inject CargoService CargoService
+
+<h3>Cadastro de Cargo</h3>
+
+<EditForm Model="@cargo" OnValidSubmit="SalvarCargo">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label>Nome do Cargo</label>
+        <InputText class="form-control" @bind-Value="cargo.Nome" />
+    </div>
+    <button class="btn btn-primary" type="submit">Salvar</button>
+</EditForm>
+
+@if (mensagem != null)
+{
+    <div class="alert alert-success mt-3">@mensagem</div>
+}
+
+@code {
+    private Cargo cargo = new();
+    private string? mensagem;
+
+    private async Task SalvarCargo()
+    {
+        await CargoService.AdicionarAsync(cargo);
+        mensagem = "Cargo cadastrado com sucesso!";
+        cargo = new();
+    }
+}

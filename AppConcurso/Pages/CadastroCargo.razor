@@ -1,0 +1,58 @@
+﻿@page "/inscricao-candidato"
+@using AppConcurso.Models
+@inject InscricaoService InscricaoService
+@inject CandidatoService CandidatoService
+@inject CargoService CargoService
+
+<h3>Inscrição de Candidato</h3>
+
+<EditForm Model="@inscricao" OnValidSubmit="SalvarInscricao">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label>Candidato</label>
+        <InputSelect class="form-control" @bind-Value="inscricao.CandidatoId">
+            <option value="">Selecione</option>
+            @foreach (var c in candidatos)
+            {
+                <option value="@c.Id">@c.Nome</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="mb-3">
+        <label>Cargo</label>
+        <InputSelect class="form-control" @bind-Value="inscricao.CargoId">
+            <option value="">Selecione</option>
+            @foreach (var c in cargos)
+            {
+                <option value="@c.Id">@c.Nome</option>
+            }
+        </InputSelect>
+    </div>
+    <button class="btn btn-primary" type="submit">Inscrever</button>
+</EditForm>
+
+@if (mensagem != null)
+{
+    <div class="alert alert-success mt-3">@mensagem</div>
+}
+
+@code {
+    private Inscricao inscricao = new();
+    private List<Candidato> candidatos = new();
+    private List<Cargo> cargos = new();
+    private string? mensagem;
+
+    protected override async Task OnInitializedAsync()
+    {
+        candidatos = await CandidatoService.ListarAsync();
+        cargos = await CargoService.ListarAsync();
+    }
+
+    private async Task SalvarInscricao()
+    {
+        await InscricaoService.AdicionarAsync(inscricao);
+        mensagem = "Inscrição realizada com sucesso!";
+        inscricao = new();
+    }
+}

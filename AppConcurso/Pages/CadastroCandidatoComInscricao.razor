@@ -1,0 +1,63 @@
+﻿@page "/cadastro-candidato-inscricao"
+@using AppConcurso.Models
+@inject CandidatoService CandidatoService
+@inject CargoService CargoService
+@inject InscricaoService InscricaoService
+
+<h3>Cadastro de Candidato com Inscrição</h3>
+
+<EditForm Model="@candidato" OnValidSubmit="SalvarCandidatoComInscricao">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label>Nome</label>
+        <InputText class="form-control" @bind-Value="candidato.Nome" />
+    </div>
+    <div class="mb-3">
+        <label>Data de Nascimento</label>
+        <InputDate class="form-control" @bind-Value="candidato.DataNascimento" />
+    </div>
+    <div class="mb-3">
+        <label>Cargo</label>
+        <InputSelect class="form-control" @bind-Value="cargoId">
+            <option value="">Selecione</option>
+            @foreach (var cargo in cargos)
+            {
+                <option value="@cargo.Id">@cargo.Nome</option>
+            }
+        </InputSelect>
+    </div>
+    <button class="btn btn-primary" type="submit">Salvar e Inscrever</button>
+</EditForm>
+
+@if (mensagem != null)
+{
+    <div class="alert alert-success mt-3">@mensagem</div>
+}
+
+@code {
+    private Candidato candidato = new();
+    private List<Cargo> cargos = new();
+    private int cargoId;
+    private string? mensagem;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cargos = await CargoService.ListarAsync();
+    }
+
+    private async Task SalvarCandidatoComInscricao()
+    {
+        if (cargoId == 0)
+        {
+            mensagem = "Selecione um cargo!";
+            return;
+        }
+
+        // Salva candidato e inscrição juntos
+        await InscricaoService.AdicionarCandidatoComInscricaoAsync(candidato, cargoId);
+        mensagem = "Candidato cadastrado e inscrito com sucesso!";
+        candidato = new();
+        cargoId = 0;
+    }
+}
